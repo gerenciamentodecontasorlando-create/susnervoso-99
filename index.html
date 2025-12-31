@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0c121c" />
+  <title>SUS Nervoso Pessoal</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brandText">
+          <div class="brandName">SUS Nervoso</div>
+          <div class="brandSub">offline-first • linha do tempo + alertas</div>
+        </div>
+      </div>
+
+      <button class="navBtn" data-view="dashboard">
+        <span class="ico">🏠</span> <span>Início</span>
+      </button>
+      <button class="navBtn" data-view="patients">
+        <span class="ico">👤</span> <span>Pacientes</span>
+      </button>
+      <button class="navBtn" data-view="encounter">
+        <span class="ico">🩺</span> <span>Atendimento</span>
+      </button>
+      <button class="navBtn" data-view="timeline">
+        <span class="ico">🧠</span> <span>Linha do tempo</span>
+      </button>
+      <button class="navBtn" data-view="documents">
+        <span class="ico">📄</span> <span>Documentos</span>
+      </button>
+      <button class="navBtn" data-view="settings">
+        <span class="ico">⚙️</span> <span>Configurações</span>
+      </button>
+
+      <div class="sidebarFooter">
+        <div class="pill" id="syncPill" title="Status de sincronização (offline-first)">OFFLINE</div>
+        <div class="pill subtle" id="autosavePill">Autosave</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="iconBtn" id="menuBtn" title="Menu">☰</button>
+        <div class="topTitle">
+          <div class="h1" id="viewTitle">Início</div>
+          <div class="h2" id="viewSubtitle">visão geral do sistema</div>
+        </div>
+
+        <div class="topActions">
+          <div class="searchBox">
+            <span class="ico">🔎</span>
+            <input id="globalSearch" placeholder="Buscar paciente, evento, medicamento..." />
+          </div>
+          <button class="btn" id="quickPdfBtn" title="PDF rápido do paciente selecionado">PDF</button>
+        </div>
+      </header>
+
+      <section class="content" id="content"></section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Print/PDF modal -->
+  <div class="modalBackdrop" id="printBackdrop" hidden>
+    <div class="modal">
+      <div class="modalHeader">
+        <div class="modalTitle">Pré-visualização de documento</div>
+        <button class="iconBtn" id="closePrint">✕</button>
+      </div>
+      <div class="modalBody">
+        <iframe id="printFrame" title="Pré-visualização"></iframe>
+      </div>
+      <div class="modalFooter">
+        <button class="btn ghost" id="downloadHtml">Baixar HTML</button>
+        <button class="btn" id="doPrint">Gerar PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
